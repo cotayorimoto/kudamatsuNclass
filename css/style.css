@@ -369,26 +369,29 @@ header .container {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  font-size: 0; /* hide text */
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-right: 4px;
 }
 
 .legend-badge.held, .date-status.held {
-  background-color: var(--accent);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  margin: 4px auto 0 auto;
+  color: var(--accent);
+  background: none;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  margin: 0 auto;
+  font-weight: 700;
 }
 
 .legend-badge.closed, .date-status.closed {
-  background-color: var(--text-muted);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  margin: 4px auto 0 auto;
+  color: #ff3b30;
+  background: none;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  margin: 0 auto;
+  font-weight: 700;
 }
 
 /* Calendar rendering custom grids */
@@ -461,8 +464,11 @@ header .container {
 }
 
 .date-status {
-  height: 8px;
-  display: block;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
 }
 
 .calendar-notice {
