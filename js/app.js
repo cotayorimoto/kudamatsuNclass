@@ -130,11 +130,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentYear = today.getFullYear();
     const currentMonth = today.getMonth(); // 0-indexed
 
-    // Render current month and next month
-    const monthsToRender = [
-      { year: currentYear, month: currentMonth },
-      { year: currentMonth === 11 ? currentYear + 1 : currentYear, month: (currentMonth + 1) % 12 }
-    ];
+    // Render current month and next 3 months (total 4 months)
+    const monthsToRender = [];
+    for (let i = 0; i <= 3; i++) {
+      const targetDate = new Date(currentYear, currentMonth + i, 1);
+      monthsToRender.push({
+        year: targetDate.getFullYear(),
+        month: targetDate.getMonth()
+      });
+    }
 
     monthsToRender.forEach((mInfo) => {
       calendarContainer.appendChild(createMonthTable(mInfo.year, mInfo.month));
