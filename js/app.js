@@ -130,9 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentYear = today.getFullYear();
     const currentMonth = today.getMonth(); // 0-indexed
 
-    // Render current month and next 3 months (total 4 months)
+    // Render current month and next 2 months (total 3 months)
     const monthsToRender = [];
-    for (let i = 0; i <= 3; i++) {
+    for (let i = 0; i <= 2; i++) {
       const targetDate = new Date(currentYear, currentMonth + i, 1);
       monthsToRender.push({
         year: targetDate.getFullYear(),
