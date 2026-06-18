@@ -335,10 +335,27 @@ header .container {
 
 /* --- SCHEDULE CALENDAR --- */
 #calendar {
-  background-color: var(--bg-main);
+  position: relative;
+  background-image: url('../assets/class03.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.calendar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(245, 245, 247, 0.88);
+  z-index: 1;
 }
 
 .calendar-section {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
