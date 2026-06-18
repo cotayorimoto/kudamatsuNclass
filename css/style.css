@@ -46,6 +46,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -55,7 +57,16 @@ body {
   line-height: 1.625;
   letter-spacing: -0.011em;
   overflow-x: hidden;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
+}
+
+/* responsive helpers */
+.mobile-br {
+  display: none;
+}
+.calendar-slash {
+  display: inline;
 }
 
 /* Increase line height specifically for easy Japanese to leave room for ruby furigana */
@@ -891,16 +902,52 @@ footer {
 }
 
 @media (max-width: 768px) {
+  /* スマホでの改行・非表示制御 */
+  .mobile-br {
+    display: inline;
+  }
+  .calendar-slash {
+    display: none;
+  }
+
+  /* ヘッダー全体の中央揃え調整 */
+  header .container {
+    position: relative;
+    justify-content: center;
+    height: 64px; /* 縦並びのロゴが綺麗に収まる高さ */
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .logo a {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+  }
+  
+  .logo-sub {
+    font-size: 0.65rem;
+  }
+  
   .menu-toggle {
     display: flex;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
   }
   
   .nav-menu {
     position: fixed;
-    top: 52px;
+    top: 64px;
     left: -100%;
     width: 100%;
-    height: calc(100vh - 52px);
+    height: calc(100vh - 64px);
     background-color: var(--bg-card);
     flex-direction: column;
     padding: 3rem 1.5rem;
@@ -946,6 +993,14 @@ footer {
   
   .container {
     padding: 0 16px;
+  }
+  
+  .hero {
+    padding-top: 64px; /* offset 64px header */
+  }
+  
+  .hero-title {
+    text-align: center;
   }
   
   .hero-actions {
