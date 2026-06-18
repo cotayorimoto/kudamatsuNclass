@@ -56,7 +56,7 @@
             山口県に住む外国人の皆さん、下松で日本語を勉強しませんか。下松日本語クラスでは、日本人スタッフと外国人学習者が自由に学んでいます。まずはクラスへ見学に来てください。
           </p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary" data-i18n="btn_visit">見学を申し込む</a>
+            <a href="#contact" class="btn btn-primary" id="btn-hero-visit" data-i18n="btn_visit">見学を申し込む</a>
           </div>
         </div>
         <div class="hero-image-container">
@@ -126,44 +126,80 @@
 
   <!-- --- CONTACT SECTION --- -->
   <section class="section contact" id="contact">
-    <div class="container">
-      <h2 class="section-title" data-i18n="contact_title">ご相談・お問合せ</h2>
-      <p class="section-subtitle" data-i18n="contact_desc">クラスの参加、見学のご相談など、お気軽にお問い合わせください。</p>
+    <div class="contact-overlay"></div>
+    <div class="container contact-container">
+      <div class="contact-header">
+        <h2 class="section-title" data-i18n="contact_title">ご相談・お問合せ</h2>
+        <p class="section-subtitle" data-i18n="contact_desc">クラスの参加や見学のご相談など、お気軽にお問い合わせください。</p>
+      </div>
       
       <div class="contact-layout">
-        <!-- Contact channels -->
-        <div class="contact-channels">
-          <!-- Email -->
-          <div class="contact-card">
-            <div class="contact-icon-box">✉</div>
-            <div class="contact-details">
-              <span class="contact-label" data-i18n="contact_email">メールアドレス</span>
-              <a href="mailto:kunicl2025@gmail.com" class="contact-value">kunicl2025@gmail.com</a>
+        <!-- Contact Form Box (Glassmorphic) -->
+        <div class="contact-form-container">
+          <form id="inquiry-form" class="contact-form">
+            <div class="form-group">
+              <label for="form-name-field" data-i18n="form_name">お名前</label>
+              <input type="text" id="form-name-field" required data-i18n-placeholder="form_placeholder_name" placeholder="山田 太郎 / Taro Yamada">
             </div>
-          </div>
-          <!-- Phone -->
-          <div class="contact-card">
-            <div class="contact-icon-box">📞</div>
-            <div class="contact-details">
-              <span class="contact-label" data-i18n="contact_phone">電話番号 (代表)</span>
-              <a href="tel:07018740369" class="contact-value">070-1874-0369</a>
-              <span style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;" data-i18n="contact_rep">代表：河村（かわむら）</span>
+            
+            <div class="form-group">
+              <label for="form-email-field" data-i18n="form_email">メールアドレス</label>
+              <input type="email" id="form-email-field" required data-i18n-placeholder="form_placeholder_email" placeholder="example@domain.com">
             </div>
+            
+            <div class="form-group">
+              <label for="form-phone-field" data-i18n="form_phone">電話番号</label>
+              <input type="tel" id="form-phone-field" data-i18n-placeholder="form_placeholder_phone" placeholder="090-1234-5678">
+            </div>
+            
+            <div class="form-group">
+              <label for="form-type-field" data-i18n="form_type">お問合せ項目</label>
+              <select id="form-type-field" required>
+                <option value="visit" data-i18n="form_type_visit">見学を申し込む (Request to Visit)</option>
+                <option value="volunteer" data-i18n="form_type_volunteer">ボランティアに応募する (Apply to Volunteer)</option>
+                <option value="other" data-i18n="form_type_other" selected>その他のお問合せ (Other Inquiry)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-message-field" data-i18n="form_message">お問合せ内容</label>
+              <textarea id="form-message-field" rows="4" required data-i18n-placeholder="form_placeholder_message" placeholder="ご質問や見学希望日などをご自由にご記入ください。"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary form-submit-btn" data-i18n="form_submit">この内容で送信する</button>
+          </form>
+          
+          <!-- Success Message (Initially Hidden) -->
+          <div id="form-success-container" class="form-success-message" style="display: none;">
+            <div class="success-icon">✓</div>
+            <h3 data-i18n="form_success_title">送信が完了しました</h3>
+            <p data-i18n="form_success_message">お問合せありがとうございます。内容を確認後、担当者より折り返しご連絡いたします。</p>
+            <button type="button" id="btn-success-close" class="btn btn-outline" data-i18n="form_close">閉じる</button>
           </div>
         </div>
 
-        <!-- Volunteer Recruitment Box -->
-        <div class="volunteer-recruitment">
-          <div>
-            <h3 class="volunteer-title" data-i18n="contact_volunteer_title">ボランティア募集</h3>
+        <!-- Sidebar Contact Card (Phone Call Information & Volunteer info) -->
+        <div class="contact-sidebar">
+          <!-- Volunteer Recruitment Box -->
+          <div class="volunteer-recruitment-card">
+            <h3 data-i18n="contact_volunteer_title">ボランティア募集</h3>
             <p class="volunteer-desc" data-i18n="contact_volunteer_desc">
               下松日本語クラスでは、日本語を教えるボランティアスタッフも随時募集しています。教員資格などは不要です。外国人の皆さんと交流しながら楽しく活動しませんか？
             </p>
+            <a href="#contact" class="btn btn-outline" id="btn-volunteer-apply" data-i18n="contact_volunteer_btn">ボランティアに応募する</a>
           </div>
-          <div>
-            <a href="mailto:kunicl2025@gmail.com?subject=日本語ボランティア募集について" class="btn btn-primary" data-i18n="contact_volunteer_btn">
-              ボランティアに応募する
-            </a>
+
+          <!-- Phone Card (Highlightable) -->
+          <div class="contact-phone-card" id="contact-phone-info">
+            <h3 data-i18n="contact_sidebar_title">お電話でのお問合せ</h3>
+            <p class="phone-card-desc" data-i18n="contact_sidebar_desc">お急ぎの方、または直接話したい方はこちらへお電話ください。</p>
+            <div class="phone-number-box">
+              <span class="phone-icon">📞</span>
+              <div class="phone-meta">
+                <a href="tel:07018740369" class="phone-link">070-1874-0369</a>
+                <span class="rep-name" data-i18n="contact_rep">代表：河村（かわむら）</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

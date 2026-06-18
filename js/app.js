@@ -251,6 +251,87 @@ document.addEventListener("DOMContentLoaded", () => {
     return tableWrapper;
   }
 
+  // --- INQUIRY FORM & INTERACTIVE BUTTONS ---
+  const inquiryForm = document.getElementById("inquiry-form");
+  const formSuccessContainer = document.getElementById("form-success-container");
+  const btnSuccessClose = document.getElementById("btn-success-close");
+  const formTypeField = document.getElementById("form-type-field");
+  const phoneInfoCard = document.getElementById("contact-phone-info");
+  
+  // Dynamic phone card highlighting based on inquiry type
+  const updatePhoneHighlight = () => {
+    if (formTypeField && phoneInfoCard) {
+      const selectedValue = formTypeField.value;
+      if (selectedValue === "visit" || selectedValue === "volunteer") {
+        phoneInfoCard.classList.add("highlight");
+      } else {
+        phoneInfoCard.classList.remove("highlight");
+      }
+    }
+  };
+
+  if (formTypeField) {
+    formTypeField.addEventListener("change", updatePhoneHighlight);
+  }
+
+  // Handle external button clicks (Hero Visit & Volunteer Apply)
+  const heroVisitBtn = document.getElementById("btn-hero-visit");
+  const volunteerApplyBtn = document.getElementById("btn-volunteer-apply");
+
+  if (heroVisitBtn) {
+    heroVisitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (formTypeField) {
+        formTypeField.value = "visit";
+        updatePhoneHighlight();
+      }
+      const target = document.getElementById("contact");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
+
+  if (volunteerApplyBtn) {
+    volunteerApplyBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (formTypeField) {
+        formTypeField.value = "volunteer";
+        updatePhoneHighlight();
+      }
+      const target = document.getElementById("contact");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
+
+  // Handle Form Submission
+  if (inquiryForm) {
+    inquiryForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      // Animate form hiding and success showing
+      inquiryForm.style.display = "none";
+      if (formSuccessContainer) {
+        formSuccessContainer.style.display = "flex";
+      }
+    });
+  }
+
+  // Handle Success Dialog Close (Reset Form)
+  if (btnSuccessClose) {
+    btnSuccessClose.addEventListener("click", () => {
+      if (inquiryForm) {
+        inquiryForm.reset();
+        inquiryForm.style.display = "flex";
+        updatePhoneHighlight();
+      }
+      if (formSuccessContainer) {
+        formSuccessContainer.style.display = "none";
+      }
+    });
+  }
+
   // --- INITIALIZATION ---
   updateLanguage(currentLang);
 });
