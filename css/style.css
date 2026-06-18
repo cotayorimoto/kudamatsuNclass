@@ -1103,9 +1103,12 @@ footer {
   .phone-card-desc,
   .phone-number-box,
   .form-group label,
-  .contact-header {
+  .contact-header,
+  .footer-info,
+  .footer-info span {
     text-align: center !important;
     align-items: center !important;
+    width: 100% !important;
   }
 
   .access-info .btn,
@@ -1121,6 +1124,10 @@ footer {
   
   .phone-number-box {
     justify-content: center !important;
+  }
+
+  .footer-info span {
+    display: block !important;
   }
 }
 
