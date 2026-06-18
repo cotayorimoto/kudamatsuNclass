@@ -169,6 +169,7 @@ img {
 
 .btn-primary:hover {
   background-color: var(--accent-light);
+  color: var(--text-light) !important;
   transform: scale(1.02);
 }
 
@@ -917,25 +918,43 @@ footer {
     display: none;
   }
 
+  /* スマホでの背景画像固定解除（iOSでのボケ・拡大バグ防止） */
+  #calendar, .contact {
+    background-attachment: scroll !important;
+  }
+
   /* ヘッダー全体の中央揃え調整 */
   header .container {
     position: relative;
-    justify-content: center;
+    justify-content: center !important;
     height: 64px; /* 縦並びのロゴが綺麗に収まる高さ */
   }
   
   .logo {
-    width: 100%;
-    text-align: center;
+    width: 100% !important;
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
   }
   
   .logo a {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    text-align: center;
-    margin: 0 auto;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 2px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .logo-main,
+  .logo-sub {
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
   }
   
   .logo-sub {
